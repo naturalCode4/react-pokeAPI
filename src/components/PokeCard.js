@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import useFetch from "use-http"
 
 function PokeCard({getNewPokemon, pokemonInfo}) {
 
@@ -16,7 +15,7 @@ function PokeCard({getNewPokemon, pokemonInfo}) {
     return(
         <>
             <p>Name: {pokemonInfo.name.slice(0,1).toUpperCase() + pokemonInfo.name.slice(1,pokemonInfo.name.length)}</p>
-            <img src={pokemonInfo.image} style={{width: '100vw', position: 'absolute', top: '15vh', zIndex: '-100', opacity: '.5'}}></img>
+            <img src={pokemonInfo.image} style={{width: '75vw', position: 'absolute', top: '10vh', left: '12.5vw', zIndex: '-100', opacity: '.6'}}></img>
             <div style={{display: 'flex', flexDirection: 'row', alignContent: 'center', gap: '15px'}}>
                 <button onClick={() => getNewPokemon(pokemonInfo.national_pokedex - 1)}>-</button>
                 <p>National Pokedex: #{pokemonInfo.national_pokedex}</p>

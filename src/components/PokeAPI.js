@@ -1,7 +1,6 @@
 import {useState, useEffect, Fragment} from 'react'
 import PokeCard from './PokeCard'
 import PokeSearch from './PokeSearch'
-import useFetch from 'use-http'
 import axios from 'axios'
 
 const pokeAPIBaseUrl = 'https://pokeapi.co/api/v2/pokemon/'

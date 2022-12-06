@@ -1,4 +1,3 @@
-import useFetch from 'use-http'
 import {useState} from 'react'
 
 function PokeSearch({getNewPokemon}) {
