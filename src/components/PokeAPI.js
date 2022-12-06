@@ -24,20 +24,22 @@ function PokeAPI() {
     })
 
     useEffect(() => {
-        getNewPokemon('zapdos')
-        console.log('pokemonInfo', pokemonInfo)
+        getNewPokemon('bulbasaur')
     }, [])
 
     console.log('PokeAPI rerendering')
 
     const getNewPokemon = (pokemonName) => {
+        const formattedPokemonName = typeof pokemonName === 'string' ? pokemonName.toLowerCase() : pokemonName
         axios
-        .get(pokeAPIBaseUrl + pokemonName.toLowerCase())
+        .get(pokeAPIBaseUrl + formattedPokemonName)
         .then(res => {
             const newPokemon = {
                 name: res.data.name,
                 types: res.data.types.map(e => e.type.name),
                 weight: res.data.weight,
+                height: res.data.height,
+                national_pokedex: res.data.id,
                 stats: {
                     hp: res.data.stats[0].base_stat,
                     attack: res.data.stats[1].base_stat,
@@ -46,7 +48,8 @@ function PokeAPI() {
                     special_defense: res.data.stats[4].base_stat,
                     speed: res.data.stats[5].base_stat,
                 },
-                moves: res.data.moves.map(e => e.move.name)
+                moves: res.data.moves.map(e => e.move.name),
+                image: res.data.sprites.other.home.front_default
             }
             setPokemonInfo(newPokemon)
         })

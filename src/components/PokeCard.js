@@ -11,12 +11,21 @@ function PokeCard({getNewPokemon, pokemonInfo}) {
         } else {setMovesOpen(true)}
     }
 
+    console.log('pokemonInfo', pokemonInfo)
+
     return(
         <>
-            <h1>PokeCard</h1>
-            <p>Name: {pokemonInfo.name}</p>
+            <p>Name: {pokemonInfo.name.slice(0,1).toUpperCase() + pokemonInfo.name.slice(1,pokemonInfo.name.length)}</p>
+            <img src={pokemonInfo.image} style={{width: '100vw', position: 'absolute', top: '15vh', zIndex: '-100', opacity: '.5'}}></img>
+            <div style={{display: 'flex', flexDirection: 'row', alignContent: 'center', gap: '15px'}}>
+                <button onClick={() => getNewPokemon(pokemonInfo.national_pokedex - 1)}>-</button>
+                <p>National Pokedex: #{pokemonInfo.national_pokedex}</p>
+                <button onClick={() => getNewPokemon(pokemonInfo.national_pokedex + 1)}>+</button>
+            </div>
+            <br></br>
             <div>Type(s): {pokemonInfo.types.map(e => <li key={'type', e}>{e}</li>)}</div>
-            <p>Weight: {pokemonInfo.weight} lbs</p>
+            <p>Weight: {pokemonInfo.weight/10} kgs</p>
+            <p>Size: {pokemonInfo.height/10} meters</p>
             <p>HP (health points): {pokemonInfo.stats.hp}</p>
             <p>Attack: {pokemonInfo.stats.attack}</p>
             <p>Defense: {pokemonInfo.stats.defense}</p>
